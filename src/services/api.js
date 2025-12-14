@@ -23,7 +23,7 @@ export async function joinSession(sessionId, name, deviceId) {
     { method: "POST" }
   );
 
-  if (!res.ok) throw new Error("Invalid session or duplicate name");
+  if (!res.ok) throw new Error("Join failed");
   return res.json();
 }
 
@@ -33,7 +33,6 @@ export async function fetchMyAssignment(sessionId, deviceId, token) {
   if (token) url.searchParams.append("token", token);
 
   const res = await fetch(url);
-  if (!res.ok) throw new Error("Not allowed or session missing");
-
+  if (!res.ok) throw new Error("Access denied");
   return res.json();
 }
