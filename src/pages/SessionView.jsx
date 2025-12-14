@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import api from "../services/api";
+import { fetchMyAssignment } from "../services/api";
 import { getDeviceId } from "../utils/device";
 import "../App.css";
 
@@ -25,12 +25,13 @@ export default function SessionView() {
         token
       }
     })
+      fetchMyAssignment(sessionId, getDeviceId(), token)
       .then(res => {
-        setTarget(res.data.target);
-        localStorage.removeItem(`ss-${sessionId}`); // 🔥 burn after read
+        setTarget(res.target);
+        localStorage.removeItem(`ss-${sessionId}`);
       })
       .catch(e =>
-        setError(e.response?.data?.message || "❌ Access denied")
+        setError(e.message || "❌ Access denied")
       );
   }, [sessionId]);
 

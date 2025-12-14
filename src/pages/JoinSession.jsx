@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import api from "../services/api";
+import { joinSession } from "../services/api";
 import { getDeviceId } from "../utils/device";
 
 export default function JoinSession() {
@@ -10,25 +10,24 @@ export default function JoinSession() {
   const [msg, setMsg] = useState("");
 
   const join = async () => {
-    try {
-      const res = await api.post(`/api/session/join/${sessionId}`, null, {
-        params: {
-          name,
-          deviceId: getDeviceId()
-        }
-      });
+  try {
+    const res = await joinSession(
+      sessionId,
+      name,
+      getDeviceId()
+    );
 
-      // 🔐 store one-time token
-      localStorage.setItem(
-        `ss-${sessionId}`,
-        JSON.stringify({ token: res.data.token })
-      );
+    localStorage.setItem(
+      `ss-${sessionId}`,
+      JSON.stringify({ token: res.token })
+    );
 
-      navigate(`/session/${sessionId}`);
-    } catch (e) {
-      setMsg(e.response?.data?.message || "❌ Join failed");
-    }
-  };
+    navigate(`/session/${sessionId}`);
+  } catch (e) {
+    setMsg(e.message || "❌ Join failed");
+  }
+};
+
 
   return (
     <div className="card">
