@@ -19,20 +19,14 @@ export default function SessionView() {
 
     const { token } = JSON.parse(stored);
 
-    api.get(`/api/session/assignment/${sessionId}`, {
-      params: {
-        deviceId: getDeviceId(),
-        token
-      }
-    })
-      fetchMyAssignment(sessionId, getDeviceId(), token)
-      .then(res => {
+    fetchMyAssignment(sessionId, getDeviceId(), token)
+      .then((res) => {
         setTarget(res.target);
-        localStorage.removeItem(`ss-${sessionId}`);
+        localStorage.removeItem(`ss-${sessionId}`); // 🔥 single-use
       })
-      .catch(e =>
-        setError(e.message || "❌ Access denied")
-      );
+      .catch((e) => {
+        setError(e.message || "❌ Access denied");
+      });
   }, [sessionId]);
 
   return (
