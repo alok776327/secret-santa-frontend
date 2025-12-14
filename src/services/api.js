@@ -1,4 +1,8 @@
-const API_BASE =process.env.REACT_APP_API_BASE_URL || "http://localhost:8080/api";
+const API_BASE = process.env.REACT_APP_API_BASE_URL;
+
+if (!API_BASE) {
+  throw new Error("REACT_APP_API_BASE_URL is not defined");
+}
 
 export async function createSession(members) {
   const res = await fetch(`${API_BASE}/session/create`, {
@@ -29,7 +33,7 @@ export async function fetchMyAssignment(sessionId, deviceId, token) {
   if (token) url.searchParams.append("token", token);
 
   const res = await fetch(url);
-
   if (!res.ok) throw new Error("Not allowed or session missing");
+
   return res.json();
 }
