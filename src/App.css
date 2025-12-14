@@ -1,0 +1,229 @@
+/* Fullscreen Background */
+.landing-container {
+  height: 100vh;
+  width: 100%;
+  background-image: url("https://img.freepik.com/free-vector/christmas-background-with-snowflakes_1048-16920.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Slight dark overlay for readability */
+.overlay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.35);
+  top: 0;
+  left: 0;
+}
+
+/* Center content */
+.content-box {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 20px 40px;
+  color: white;
+  max-width: 600px;
+}
+
+/* Title */
+.title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-shadow: 2px 3px 5px rgba(0,0,0,0.4);
+}
+
+/* Subtitle */
+.subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+/* Button Row */
+.btn-group {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Buttons */
+.btn {
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.25s;
+}
+
+.primary {
+  background: #ff4747;
+  color: white;
+}
+
+.primary:hover {
+  background: #ff2e2e;
+  transform: scale(1.05);
+}
+
+.secondary {
+  background: #ffffff;
+  color: #333;
+}
+
+.secondary:hover {
+  background: #e8e8e8;
+  transform: scale(1.05);
+}
+
+/* Footer */
+.footer-text {
+  margin-top: 25px;
+  opacity: 0.9;
+  font-size: 0.95rem;
+}
+
+/* Mobile responsive */
+@media (max-width: 600px) {
+  .title {
+    font-size: 2.2rem;
+  }
+  .btn-group {
+    flex-direction: column;
+  }
+  .btn {
+    width: 100%;
+  }
+}
+
+/* GLOBAL RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* BEAUTIFUL GRADIENT BACKGROUND */
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4 40%, #fad0c4 100%);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+/* GLASS CARD */
+.card {
+  width: 100%;
+  max-width: 420px;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+  border-radius: 18px;
+  padding: 25px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.8s ease;
+  margin-top: 30px;
+}
+
+/* HEADER */
+.card h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  font-weight: 600;
+  color: #222;
+}
+.card h3 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* TEXTAREAS & INPUT */
+textarea,
+input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  margin-top: 10px;
+  font-size: 15px;
+  background: rgba(255, 255, 255, 0.85);
+}
+
+/* BUTTON */
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  background: #ff4d6d;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  background: #e63950;
+  transform: scale(1.03);
+}
+
+.copy-status {
+  text-align: center;
+  margin-top: 10px;
+  color: green;
+  font-weight: bold;
+}
+
+/* ASSIGNMENT RESULT */
+.assignment-box {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  margin-top: 20px;
+  animation: fadeIn 1s ease;
+}
+
+/* EMOJI ANIMATIONS */
+.emoji {
+  font-size: 30px;
+  animation: bounce 1.5s infinite;
+  display: inline-block;
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounce {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+/* RESPONSIVE */
+@media (max-width: 480px) {
+  .card {
+    padding: 18px;
+  }
+  h2 {
+    font-size: 22px;
+  }
+  button {
+    font-size: 15px;
+  }
+}
